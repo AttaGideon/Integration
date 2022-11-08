@@ -12,10 +12,11 @@ double trapezRule(dVec v, int a, int b, int n) // initial limit, a; end limit, b
 {
     double cx = (b - a) / n; // the change in x
 
-    double x0 = cx/2 * ( v[0] + v[n]); 
-    double sum1 = cx * accumulate(v.cbegin() + 1, v.cend() - 1, 0.0);
+    double x0 = cx/2 * ( v[0] + v[n]);  // separating the first and the  last element of the vector 
+					// from all the element as seen of the trapezoidal rule formula
+    double sum1 = cx * accumulate(v.cbegin() + 1, v.cend() - 1, 0.0);  // compute all the elements in the vector except the first and the last element: check trap Rule eqn.
 
-    return (x0 + xn + sum1);
+    return (x0 + sum1);           // return the output
 }
 
 double SimRule(dVec vec, int a, int b, int n)
@@ -40,7 +41,7 @@ double SimRule(dVec vec, int a, int b, int n)
 
 int main()
 {
-    /* tried examples from: https://math24.net/simpsons-rule.html */
+    /* try examples from: https://math24.net/simpsons-rule.html */
   
     //dVec v{0, 4, 5, 3, 10, 11, 2}; // a=-4, b=2, n=6
     dVec v{4,6,6,4,4,5}; // a=0, b=10, n=5
